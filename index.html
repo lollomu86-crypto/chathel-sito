@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>ChatHel · Il tuo Hotel, in tasca</title>
-  <meta name="description" content="ChatHel è la web app per gli ospiti del tuo resort: bonus di benvenuto, eventi, prenotazioni, reception e una parte sociale moderata dall'hotel. Nessuna app da scaricare.">
+  <meta name="description" content="ChatHel è la web app per gli ospiti del tuo resort: bonus di benvenuto, eventi, prenotazioni, reception e una parte sociale moderata dall'hotel, in 12 lingue. Nessuna app da scaricare.">
   <meta name="theme-color" content="#0030B0">
   <meta property="og:title" content="ChatHel · Il tuo Hotel, in tasca">
   <meta property="og:description" content="La web app per gli ospiti del tuo resort. Si entra con un QR, senza scaricare nulla.">
@@ -59,7 +59,7 @@
             <img src="img/home.webp" alt="Schermata Home dell'app ChatHel: bonus di benvenuto, scorciatoie per Eventi, Prenota e Reception, prossimi eventi" width="620" height="1342">
           </figure>
           <figure class="phone phone-back" aria-hidden="true">
-            <img src="img/social-chat.webp" alt="" width="620" height="1342" loading="lazy">
+            <img src="img/events.webp" alt="" width="620" height="1342" loading="lazy">
           </figure>
         </div>
       </div>
@@ -83,7 +83,7 @@
           <li class="step">
             <span class="step-n">2</span>
             <h3>Accede con Google</h3>
-            <p>Basta un tocco ed è dentro, nella sua lingua: italiano, inglese, tedesco o russo.</p>
+            <p>Basta un tocco ed è dentro, nella sua lingua: l'app ne parla dodici.</p>
           </li>
           <li class="step">
             <span class="step-n">3</span>
@@ -130,8 +130,8 @@
           </article>
           <article class="feature">
             <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.5 2.6 3.5 5.4 3.5 8.5s-1 5.9-3.5 8.5c-2.5-2.6-3.5-5.4-3.5-8.5s1-5.9 3.5-8.5z"/></svg></span>
-            <h3>Quattro lingue</h3>
-            <p>Italiano, inglese, tedesco e russo. Ogni ospite usa l'app nella sua lingua, senza che l'hotel debba fare nulla.</p>
+            <h3>Dodici lingue</h3>
+            <p>Ogni ospite usa l'app nella sua lingua, senza che l'hotel debba fare nulla. E in chat un tocco su "Traduci" mostra nella propria lingua i messaggi degli altri.</p>
           </article>
           <article class="feature">
             <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 0 0 4 0"/></svg></span>
@@ -143,6 +143,24 @@
             <h3>Si apre come un'app</h3>
             <p>L'ospite può aggiungere ChatHel alla schermata Home del telefono: si apre a tutto schermo, come un'app, senza passare dagli store.</p>
           </article>
+        </div>
+
+        <div class="langs">
+          <p class="langs-title">L'app parla la lingua dei tuoi ospiti</p>
+          <ul class="langs-list" aria-label="Lingue disponibili">
+            <li lang="it">Italiano</li>
+            <li lang="en">English</li>
+            <li lang="de">Deutsch</li>
+            <li lang="fr">Français</li>
+            <li lang="es">Español</li>
+            <li lang="pt">Português</li>
+            <li lang="nl">Nederlands</li>
+            <li lang="sv">Svenska</li>
+            <li lang="pl">Polski</li>
+            <li lang="cs">Čeština</li>
+            <li lang="ru">Русский</li>
+            <li lang="zh">中文</li>
+          </ul>
         </div>
 
         <div class="gallery" aria-label="Schermate dell'app per gli ospiti">
@@ -171,8 +189,61 @@
     <section class="section" id="sociale">
       <div class="wrap split">
         <div class="split-media">
-          <figure class="phone phone-lg">
-            <img src="img/social-chat.webp" alt="Chat dell'hotel con messaggi degli ospiti in più lingue e una sfida a ping pong" width="620" height="1342" loading="lazy">
+          <figure class="chat-demo">
+            <div class="phone phone-lg">
+              <div class="chat" aria-label="Esempio della chat dell'hotel">
+                <div class="chat-head">
+                  <img src="img/icon-192.png" alt="" width="34" height="34">
+                  <span><strong>Hotel Demo Alba</strong><small>Ciao, Giulia</small></span>
+                </div>
+                <p class="chat-title">Chat di Hotel Demo Alba</p>
+                <ul class="chat-list">
+                  <li class="msg">
+                    <span class="av" aria-hidden="true">M</span>
+                    <div class="bubble">
+                      <span class="who">Marco</span>
+                      <p lang="it">Qualcuno per una partita a padel domattina?</p>
+                      <span class="time">09:12</span>
+                    </div>
+                  </li>
+                  <li class="msg" data-from="tedesco" data-tr="Buongiorno! Lo yoga all'alba è stato bellissimo.">
+                    <span class="av" aria-hidden="true">S</span>
+                    <div class="bubble">
+                      <span class="who">Sofia</span>
+                      <p lang="de">Guten Morgen! Yoga bei Sonnenaufgang war wunderschön.</p>
+                      <span class="time">09:20</span>
+                    </div>
+                    <button class="tr-btn" type="button" aria-pressed="false">Traduci</button>
+                  </li>
+                  <li class="msg" data-from="spagnolo" data-tr="Chi viene all'aperitivo di stasera?">
+                    <span class="av" aria-hidden="true">L</span>
+                    <div class="bubble">
+                      <span class="who">Lucía</span>
+                      <p lang="es">¿Quién viene al aperitivo esta tarde?</p>
+                      <span class="time">09:31</span>
+                    </div>
+                    <button class="tr-btn" type="button" aria-pressed="false">Traduci</button>
+                  </li>
+                  <li class="msg" data-from="inglese" data-tr="Una bella spiaggia qui vicino per bambini?">
+                    <span class="av" aria-hidden="true">A</span>
+                    <div class="bubble">
+                      <span class="who">Anna</span>
+                      <p lang="en">Any good beach nearby for kids?</p>
+                      <span class="time">09:40</span>
+                    </div>
+                    <button class="tr-btn" type="button" aria-pressed="false">Traduci</button>
+                  </li>
+                  <li class="msg msg-own">
+                    <div class="bubble">
+                      <p lang="it">Io ci sono, ci vediamo al bar!</p>
+                      <span class="time">09:42</span>
+                    </div>
+                  </li>
+                </ul>
+                <div class="chat-input" aria-hidden="true"><span>Scrivi a tutti gli ospiti…</span><b>Invia</b></div>
+              </div>
+            </div>
+            <figcaption>Prova: tocca "Traduci" sotto i messaggi in lingua straniera.</figcaption>
           </figure>
         </div>
         <div class="split-text">
@@ -182,6 +253,7 @@
           <ul class="checks">
             <li><strong>Elenco ospiti</strong> con nome e lingua, per chi sceglie di comparire.</li>
             <li><strong>Chat dell'hotel</strong>, aperta a tutti gli ospiti che la attivano.</li>
+            <li><strong>Traduzione dei messaggi</strong>: un tocco su "Traduci" e il messaggio di un ospite straniero compare nella propria lingua.</li>
             <li><strong>Messaggi privati</strong> solo su richiesta accettata.</li>
             <li><strong>Coupon</strong> da offrire a un altro ospite, validati al bar.</li>
             <li><strong>Sfide ai giochi</strong>: ping pong, calcio balilla, biliardo. Chi perde offre un caffè o un aperitivo, oppure si gioca solo per divertimento.</li>
@@ -229,7 +301,7 @@
           </div>
           <div class="panel-item panel-item-wide">
             <h3>L'app con il volto del tuo hotel</h3>
-            <p>Carichi logo e foto di copertina, scrivi il messaggio di benvenuto nelle quattro lingue e scegli quali funzioni accendere: parte sociale, chat, sfide, coupon, prenotazioni, reception AI. Se spegni una funzione, sparisce subito dall'app, ma non si cancella nulla.</p>
+            <p>Carichi logo e foto di copertina, scrivi il messaggio di benvenuto in italiano, inglese, tedesco e russo e scegli quali funzioni accendere: parte sociale, chat, sfide, coupon, prenotazioni, reception AI. Se spegni una funzione, sparisce subito dall'app, ma non si cancella nulla.</p>
           </div>
         </div>
       </div>

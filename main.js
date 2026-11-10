@@ -42,9 +42,30 @@
   // precarica le altre schermate del pannello
   window.addEventListener('load', function () { tabs.forEach(function (t) { new Image().src = t.dataset.img; }); });
 
+  // chat dimostrativa: "Traduci" mostra il messaggio in italiano, "Mostra originale" lo riporta com'era
+  Array.prototype.forEach.call(document.querySelectorAll('.msg[data-tr]'), function (msg) {
+    var btn = msg.querySelector('.tr-btn');
+    var text = msg.querySelector('.bubble p');
+    var bubble = msg.querySelector('.bubble');
+    var original = text.textContent;
+    var originalLang = text.getAttribute('lang');
+    var note = document.createElement('span');
+    note.className = 'tr-note';
+    note.textContent = 'Tradotto dal ' + msg.dataset.from;
+    btn.addEventListener('click', function () {
+      var on = btn.getAttribute('aria-pressed') !== 'true';
+      text.textContent = on ? msg.dataset.tr : original;
+      text.setAttribute('lang', on ? 'it' : originalLang);
+      if (on) bubble.insertBefore(note, text.nextSibling); else if (note.parentNode) note.parentNode.removeChild(note);
+      msg.classList.toggle('translated', on);
+      btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+      btn.textContent = on ? 'Mostra originale' : 'Traduci';
+    });
+  });
+
   // comparsa morbida delle sezioni
   if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    var els = document.querySelectorAll('.section-head, .step, .feature, .shot, .split-text, .split-media, .browser, .panel-item, .plan, .founding');
+    var els = document.querySelectorAll('.section-head, .step, .feature, .shot, .split-text, .split-media, .langs, .browser, .panel-item, .plan, .founding');
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
     }, { rootMargin: '0px 0px -8% 0px' });
