@@ -65,7 +65,7 @@
 
   // comparsa morbida delle sezioni
   if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    var els = document.querySelectorAll('.section-head, .step, .feature, .shot, .split-text, .split-media, .langs, .browser, .panel-item, .plan, .founding');
+    var els = document.querySelectorAll('.section-head, .step, .feature, .shot, .split-text, .split-media, .langs, .browser, .panel-item');
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
     }, { rootMargin: '0px 0px -8% 0px' });
