@@ -99,9 +99,6 @@ p { margin: 0; }
 .eyebrow-blue { color: var(--link); opacity: 1; margin-bottom: 12px; }
 .lead { font-size: 1.15rem; line-height: 1.65; max-width: 34em; margin-top: 22px; opacity: .92; }
 .hero-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
-.hero-facts { list-style: none; padding: 0; margin: 32px 0 0; display: flex; flex-wrap: wrap; gap: 10px 24px; font-size: .95rem; opacity: .9; }
-.hero-facts li { position: relative; padding-left: 18px; }
-.hero-facts li::before { content: ""; position: absolute; left: 0; top: .6em; width: 8px; height: 8px; border-radius: 50%; background: var(--cta); }
 .hero-visual { position: relative; display: flex; justify-content: center; min-height: 560px; }
 .wave { position: absolute; left: 0; right: 0; bottom: -1px; width: 100%; height: 80px; fill: var(--bg); }
 
@@ -264,30 +261,6 @@ p { margin: 0; }
 .panel-item-wide p { color: var(--text); }
 @media (max-width: 960px) { .panel-grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 560px) { .panel-grid { grid-template-columns: 1fr; } .panel-tabs { display: flex; } .panel-tabs button { flex: 1; padding: 0 10px; } }
-
-/* Prezzi */
-.founding {
-  display: flex; align-items: center; gap: 20px; padding: 22px 28px; margin-bottom: 24px;
-  border-radius: var(--radius-xl); background: var(--surface); border: 2px dashed var(--ticket-line); position: relative;
-}
-.founding::before { content: ""; position: absolute; left: -2px; top: 16px; bottom: 16px; width: 6px; border-radius: 0 6px 6px 0; background: var(--cta); }
-.founding-label { font-family: var(--font-display); font-weight: 800; font-size: .85rem; letter-spacing: .08em; text-transform: uppercase; color: var(--cta-text); margin-bottom: 4px; }
-.founding-text { font-size: 1.05rem; }
-.plans { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-.plan { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-xl); padding: 32px 28px; box-shadow: var(--shadow-card); }
-.plan-mid { border: 2px solid var(--primary); }
-.plan h3 { font-size: 1.4rem; }
-.plan-size { color: var(--text-muted); margin-top: 4px; }
-.price { margin-top: 24px; display: flex; align-items: baseline; gap: 6px; }
-.amount { font-family: var(--font-display); font-weight: 800; font-size: 2.8rem; letter-spacing: -0.03em; color: var(--primary); line-height: 1; }
-.per { color: var(--text-muted); font-weight: 500; }
-.price-founding { margin-top: 16px; padding-top: 16px; border-top: 1px dashed var(--border); font-size: .92rem; color: var(--text-muted); }
-.price-founding strong { color: var(--cta-text); }
-.plan-incl { list-style: none; padding: 0; margin: 32px 0 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-.plan-incl li { color: var(--text-muted); padding-left: 18px; position: relative; font-size: .97rem; }
-.plan-incl li::before { content: ""; position: absolute; left: 0; top: .6em; width: 7px; height: 7px; border-radius: 50%; background: var(--primary); }
-.plan-incl strong { color: var(--text); }
-@media (max-width: 860px) { .plans, .plan-incl { grid-template-columns: 1fr; } .founding { padding: 20px 22px; } }
 
 /* Contatti */
 .contact { background: var(--header-bg); color: var(--on-header); padding: 96px 0; position: relative; overflow: hidden; }
