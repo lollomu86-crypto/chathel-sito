@@ -37,3 +37,22 @@ Apre lo stesso sito; nel pannello di Vercel (Analytics → Pages) la visita comp
 Non usare i parametri `utm_`: sul piano gratuito Vercel non li mostra (servono Enterprise o il componente Web Analytics Plus).
 
 Il link lega una visita a un hotel, quindi a una persona: va citato nell'informativa del sito, da far verificare all'avvocato.
+
+## Pannello delle visite (con la città)
+**chathel.com/pannello-visite**, protetto da password, non indicizzato. Mostra ogni visita con data e ora italiana, pagina (home o `/v/<hotel>`), città, regione e paese, dispositivo, browser, provenienza e un codice anonimo del visitatore; più i totali per hotel e per città. Il tasto "Non contare questo browser" esclude le visite dei soci.
+
+Come funziona:
+- `main.js` manda a `POST /api/visit` solo la pagina e il sito di provenienza (niente cookie; niente invio dai browser automatici o da quelli segnati "non contare").
+- `api/visit.js` scarta i robot noti, prende città/regione/paese dalle intestazioni di Vercel (`x-vercel-ip-city` ecc.) e salva una riga in Supabase (`public.site_visits`). **L'IP non si salva**: serve solo per il codice anonimo del visitatore (`sha256(VISITS_SALT|giorno|IP|browser)`, cambia ogni giorno).
+- `api/visits.js` restituisce le visite al pannello se la password è giusta (confronto a tempo costante, 0,8 s di attesa sugli errori).
+- Logica in `lib/visits.js`, test in `test/` (`npm test`).
+
+Da fare una volta sola (Lorenzo):
+1. Supabase → SQL Editor → eseguire `sql/site_visits.sql`.
+2. Vercel → progetto `chathel-sito` → Settings → Environment Variables (Production), **mai in chat**:
+   - `SUPABASE_URL` e `SUPABASE_SERVICE_ROLE_KEY`: gli stessi valori del progetto `chathel-app`;
+   - `VISITS_PANEL_PASSWORD`: la password del pannello, scelta da voi (lunga);
+   - `VISITS_SALT`: una parola segreta lunga e a caso, da non cambiare (cambiandola, i codici dei visitatori ripartono).
+3. Ripubblicare (Deployments → … → Redeploy) perché le variabili valgano.
+
+Conservazione: le visite restano nella tabella; cancellare quelle più vecchie di 13 mesi (`delete from public.site_visits where ts < now() - interval '13 months';`). La città è approssimativa e dedotta dall'indirizzo internet: è comunque un dato personale, da citare nell'informativa del sito insieme ai link per hotel (da far verificare all'avvocato).
