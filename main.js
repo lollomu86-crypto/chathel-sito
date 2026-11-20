@@ -1,5 +1,19 @@
 // ChatHel · sito per i direttori: piccoli comportamenti, il sito funziona anche senza.
 (function () {
+  // visita per il pannello delle visite (api/visit.js): pagina e provenienza; la città la ricava il server.
+  // Niente cookie. Non parte da browser automatici né dai browser che il pannello ha segnato "non contare".
+  try {
+    var skip = false;
+    try { skip = window.localStorage.getItem('chathel-non-contare') === '1'; } catch (e) {}
+    if (!skip && !navigator.webdriver && location.hostname.indexOf('chathel.com') !== -1 && window.fetch) {
+      fetch('/api/visit', {
+        method: 'POST', keepalive: true, credentials: 'omit',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ path: location.pathname, ref: document.referrer || '' })
+      }).catch(function () {});
+    }
+  } catch (e) {}
+
   // ombra della testata dopo lo scorrimento
   var bar = document.querySelector('.topbar');
   var onScroll = function () { bar.classList.toggle('scrolled', window.scrollY > 8); };

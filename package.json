@@ -1,0 +1,12 @@
+{
+  "name": "chathel-sito",
+  "private": true,
+  "type": "module",
+  "description": "Sito di presentazione di ChatHel (chathel.com): pagina statica + due funzioni Vercel per le visite.",
+  "scripts": {
+    "test": "node --test \"test/*.test.js\""
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

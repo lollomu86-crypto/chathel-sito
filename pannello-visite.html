@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Visite · ChatHel</title>
+  <link rel="icon" type="image/png" href="/img/icon-192.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+  <style>
+    /* Pannello delle visite: stessi token del sito (style.css). Solo per i soci. */
+    body { background: var(--bg); }
+    .pv-top { background: var(--header-bg); color: var(--on-header); }
+    .pv-top .wrap { display: flex; align-items: center; gap: 12px; min-height: 64px; }
+    .pv-top h1 { font-size: 1.2rem; font-weight: 800; margin: 0; }
+    .pv-top img { width: 36px; height: 36px; border-radius: 9px; background: #fff; }
+    .pv-top .grow { flex: 1; }
+    .pv-link { background: none; border: 0; color: var(--on-header); font: 500 .95rem var(--font-body); text-decoration: underline; cursor: pointer; min-height: 44px; }
+    .pv-main { padding-top: 28px; padding-bottom: 64px; }
+    .pv-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-xl); padding: 24px; box-shadow: var(--shadow-card); }
+    .pv-login { max-width: 420px; margin: 48px auto; display: grid; gap: 14px; }
+    .pv-login h2 { font-size: 1.4rem; }
+    label { font-weight: 600; font-size: .95rem; }
+    input[type=password], select {
+      font: 1rem var(--font-body); min-height: 48px; padding: 0 14px; border: 2px solid var(--border-strong);
+      border-radius: var(--radius-lg); background: var(--surface); color: var(--text); width: 100%;
+    }
+    .pv-btn { font: 600 1rem var(--font-body); min-height: 48px; padding: 0 22px; border-radius: var(--radius-pill); border: 2px solid transparent; cursor: pointer; background: var(--primary); color: var(--on-primary); }
+    .pv-btn:hover { background: var(--primary-hover); }
+    .pv-btn-2 { background: var(--surface); color: var(--text); border-color: var(--border-strong); }
+    .pv-btn-2:hover { background: var(--primary-soft); }
+    .pv-err { color: var(--danger, #B91C1C); font-weight: 500; min-height: 1.4em; }
+    .pv-bar { display: flex; flex-wrap: wrap; gap: 12px; align-items: end; margin-bottom: 20px; }
+    .pv-bar .field { display: grid; gap: 6px; min-width: 180px; }
+    .pv-check { display: inline-flex; align-items: center; gap: 8px; min-height: 48px; font-weight: 500; }
+    .pv-check input { width: 20px; height: 20px; accent-color: var(--primary); }
+    .pv-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 20px; }
+    .pv-stat { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 16px 18px; }
+    .pv-stat b { display: block; font-family: var(--font-display); font-weight: 800; font-size: 2rem; color: var(--primary); line-height: 1.1; }
+    .pv-stat span { color: var(--text-muted); font-size: .9rem; }
+    .pv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+    .pv-card h2 { font-size: 1.1rem; margin-bottom: 12px; }
+    .pv-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+    .pv-list li { display: flex; justify-content: space-between; gap: 12px; border-bottom: 1px dashed var(--border); padding-bottom: 8px; }
+    .pv-list li:last-child { border-bottom: 0; }
+    .pv-list small { color: var(--text-muted); display: block; }
+    .pv-num { font-weight: 700; color: var(--primary); white-space: nowrap; }
+    .pv-scroll { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; font-size: .92rem; }
+    th, td { text-align: left; padding: 10px 10px; border-bottom: 1px solid var(--border); vertical-align: top; white-space: nowrap; }
+    th { color: var(--text-muted); font-weight: 600; font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; }
+    td.city { white-space: normal; min-width: 140px; }
+    .tag-h { background: var(--primary-soft); color: var(--on-primary-soft); border-radius: var(--radius-pill); padding: 2px 10px; font-weight: 600; }
+    .muted { color: var(--text-muted); }
+    .pv-note { color: var(--text-muted); font-size: .88rem; margin-top: 14px; }
+    .pv-me { margin-top: 20px; display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+    [hidden] { display: none !important; }
+    @media (max-width: 860px) { .pv-stats { grid-template-columns: 1fr 1fr; } .pv-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <header class="pv-top">
+    <div class="wrap">
+      <img src="/img/icon-192.png" alt="" width="36" height="36">
+      <h1>Visite di chathel.com</h1>
+      <span class="grow"></span>
+      <button class="pv-link" id="logout" type="button" hidden>Esci</button>
+    </div>
+  </header>
+
+  <main class="wrap pv-main">
+    <form class="pv-card pv-login" id="login">
+      <h2>Pannello riservato</h2>
+      <label for="pw">Password</label>
+      <input id="pw" type="password" autocomplete="current-password" required>
+      <button class="pv-btn" type="submit">Entra</button>
+      <p class="pv-err" id="login-err" role="alert"></p>
+    </form>
+
+    <section id="app" hidden>
+      <div class="pv-bar">
+        <div class="field">
+          <label for="days">Periodo</label>
+          <select id="days">
+            <option value="1">Ultime 24 ore</option>
+            <option value="7">Ultimi 7 giorni</option>
+            <option value="30" selected>Ultimi 30 giorni</option>
+            <option value="90">Ultimi 90 giorni</option>
+            <option value="365">Ultimo anno</option>
+          </select>
+        </div>
+        <label class="pv-check"><input type="checkbox" id="only-hotels"> Solo link degli hotel</label>
+        <button class="pv-btn pv-btn-2" type="button" id="reload">Aggiorna</button>
+      </div>
+      <p class="pv-err" id="app-err" role="alert"></p>
+
+      <div class="pv-stats">
+        <div class="pv-stat"><b id="s-visits">0</b><span>visite</span></div>
+        <div class="pv-stat"><b id="s-visitors">0</b><span>visitatori (per giorno)</span></div>
+        <div class="pv-stat"><b id="s-hotels">0</b><span>link di hotel aperti</span></div>
+        <div class="pv-stat"><b id="s-cities">0</b><span>città diverse</span></div>
+      </div>
+
+      <div class="pv-grid">
+        <div class="pv-card">
+          <h2>Link degli hotel</h2>
+          <ul class="pv-list" id="hotels"></ul>
+        </div>
+        <div class="pv-card">
+          <h2>Città</h2>
+          <ul class="pv-list" id="cities"></ul>
+        </div>
+      </div>
+
+      <div class="pv-card">
+        <h2>Visita per visita</h2>
+        <div class="pv-scroll">
+          <table>
+            <thead><tr><th>Data e ora</th><th>Pagina</th><th>Città</th><th>Dispositivo</th><th>Provenienza</th><th>Visitatore</th></tr></thead>
+            <tbody id="rows"></tbody>
+          </table>
+        </div>
+        <p class="pv-note">Città e regione le ricava Vercel dall'indirizzo internet: sono approssimative (a volte il capoluogo o la città del fornitore). I robot più noti sono già esclusi. "Visitatore" è un codice anonimo che cambia ogni giorno: stesso codice nello stesso giorno = stessa persona.</p>
+      </div>
+
+      <div class="pv-me">
+        <button class="pv-btn pv-btn-2" type="button" id="me"></button>
+        <span class="muted" id="me-state"></span>
+      </div>
+    </section>
+  </main>
+
+  <script>
+  (function () {
+    var KEY = 'chathel-pannello-pw', ME = 'chathel-non-contare';
+    var $ = function (id) { return document.getElementById(id); };
+    var store = { get: function (s, k) { try { return window[s].getItem(k); } catch (e) { return null; } },
+                  set: function (s, k, v) { try { v === null ? window[s].removeItem(k) : window[s].setItem(k, v); } catch (e) {} } };
+    var regionName = (function () { try { var d = new Intl.DisplayNames(['it'], { type: 'region' }); return function (c) { try { return d.of(c); } catch (e) { return c; } }; } catch (e) { return function (c) { return c; }; } })();
+    var fmt = new Intl.DateTimeFormat('it-IT', { timeZone: 'Europe/Rome', weekday: 'short', day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' });
+    var data = [];
+
+    function el(tag, text, cls) { var e = document.createElement(tag); if (text != null) e.textContent = text; if (cls) e.className = cls; return e; }
+    function place(v) { var p = [v.city, v.region && v.country === 'IT' ? null : v.region, v.country ? regionName(v.country) : null].filter(Boolean); return p.join(', ') || 'sconosciuta'; }
+
+    function render() {
+      var only = $('only-hotels').checked;
+      var list = only ? data.filter(function (v) { return v.hotel; }) : data;
+      var visitors = {}, cities = {}, hotels = {};
+      list.forEach(function (v) {
+        visitors[v.ts.slice(0, 10) + v.visitor] = 1;
+        var c = v.city ? v.city + (v.country ? ' (' + v.country + ')' : '') : 'sconosciuta';
+        cities[c] = (cities[c] || 0) + 1;
+        if (v.hotel) { var h = hotels[v.hotel] || (hotels[v.hotel] = { n: 0, last: v }); h.n++; }
+      });
+      $('s-visits').textContent = list.length;
+      $('s-visitors').textContent = Object.keys(visitors).length;
+      $('s-hotels').textContent = Object.keys(hotels).length;
+      $('s-cities').textContent = Object.keys(cities).filter(function (c) { return c !== 'sconosciuta'; }).length;
+
+      var hl = $('hotels'); hl.textContent = '';
+      var hk = Object.keys(hotels).sort(function (a, b) { return hotels[b].last.ts.localeCompare(hotels[a].last.ts); });
+      if (!hk.length) hl.appendChild(el('li', 'Nessun link di hotel aperto nel periodo.', 'muted'));
+      hk.forEach(function (k) {
+        var li = el('li'), left = el('span');
+        left.appendChild(el('strong', '/v/' + k));
+        left.appendChild(el('small', 'Ultima: ' + fmt.format(new Date(hotels[k].last.ts)) + ' · ' + place(hotels[k].last)));
+        li.appendChild(left); li.appendChild(el('span', hotels[k].n + (hotels[k].n === 1 ? ' visita' : ' visite'), 'pv-num'));
+        hl.appendChild(li);
+      });
+
+      var cl = $('cities'); cl.textContent = '';
+      var ck = Object.keys(cities).sort(function (a, b) { return cities[b] - cities[a]; }).slice(0, 12);
+      if (!ck.length) cl.appendChild(el('li', 'Nessuna visita nel periodo.', 'muted'));
+      ck.forEach(function (k) { var li = el('li'); li.appendChild(el('span', k)); li.appendChild(el('span', String(cities[k]), 'pv-num')); cl.appendChild(li); });
+
+      var tb = $('rows'); tb.textContent = '';
+      if (!list.length) { var tr0 = el('tr'), td0 = el('td', 'Nessuna visita nel periodo.', 'muted'); td0.colSpan = 6; tr0.appendChild(td0); tb.appendChild(tr0); }
+      list.slice(0, 1000).forEach(function (v) {
+        var tr = el('tr');
+        tr.appendChild(el('td', fmt.format(new Date(v.ts))));
+        var tdp = el('td'); if (v.hotel) tdp.appendChild(el('span', '/v/' + v.hotel, 'tag-h')); else tdp.textContent = 'home'; tr.appendChild(tdp);
+        tr.appendChild(el('td', place(v), 'city'));
+        tr.appendChild(el('td', [v.device === 'mobile' ? 'Telefono' : v.device === 'tablet' ? 'Tablet' : 'Computer', v.os, v.browser].filter(Boolean).join(' · ')));
+        tr.appendChild(el('td', v.referrer || 'diretta / link', v.referrer ? null : 'muted'));
+        tr.appendChild(el('td', (v.visitor || '').slice(0, 6), 'muted'));
+        tb.appendChild(tr);
+      });
+    }
+
+    function load() {
+      var pw = store.get('sessionStorage', KEY);
+      if (!pw) return showLogin();
+      $('app-err').textContent = '';
+      return fetch('/api/visits?days=' + encodeURIComponent($('days').value), { headers: { Authorization: 'Bearer ' + pw }, cache: 'no-store' })
+        .then(function (r) {
+          if (r.status === 401) { store.set('sessionStorage', KEY, null); showLogin('Password sbagliata.'); return null; }
+          if (r.status === 503) { $('app-err').textContent = 'Il pannello non è ancora configurato su Vercel (variabili mancanti).'; return null; }
+          if (!r.ok) { $('app-err').textContent = 'Errore nel leggere le visite (' + r.status + '). Riprova.'; return null; }
+          return r.json();
+        })
+        .then(function (j) { if (j) { data = j.visits || []; showApp(); render(); } })
+        .catch(function () { $('app-err').textContent = 'Connessione non riuscita. Riprova.'; });
+    }
+
+    function showLogin(msg) { $('app').hidden = true; $('logout').hidden = true; $('login').hidden = false; $('login-err').textContent = msg || ''; $('pw').focus(); }
+    function showApp() { $('login').hidden = true; $('app').hidden = false; $('logout').hidden = false; }
+    function meState() {
+      var off = store.get('localStorage', ME) === '1';
+      $('me').textContent = off ? 'Torna a contare questo browser' : 'Non contare questo browser';
+      $('me-state').textContent = off ? 'Le visite da questo browser non vengono registrate.' : 'Le visite da questo browser vengono registrate.';
+    }
+
+    $('login').addEventListener('submit', function (e) {
+      e.preventDefault();
+      store.set('sessionStorage', KEY, $('pw').value);
+      $('pw').value = '';
+      load();
+    });
+    $('logout').addEventListener('click', function () { store.set('sessionStorage', KEY, null); data = []; showLogin(); });
+    $('days').addEventListener('change', load);
+    $('reload').addEventListener('click', load);
+    $('only-hotels').addEventListener('change', render);
+    $('me').addEventListener('click', function () { var off = store.get('localStorage', ME) === '1'; store.set('localStorage', ME, off ? null : '1'); meState(); });
+    meState();
+    if (store.get('sessionStorage', KEY)) load(); else showLogin();
+  })();
+  </script>
+</body>
+</html>
