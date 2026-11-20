@@ -24,3 +24,14 @@ npx serve .
 Regole del marchio (BRAND.md, sezione Claims): niente "conforme al GDPR", "certificato", "sicuro al 100%"; niente percentuali di risparmio o ricavo prima dei dati del pilota; niente frasi da app di incontri; niente nomi di hotel come clienti senza accordo scritto. Prima della costituzione della SRL si scrive solo "ChatHel".
 
 La reception AI è segnata "in attivazione" finché non è attiva in produzione: togliere l'etichetta in `index.html` quando lo sarà.
+
+## Statistiche delle visite
+Web Analytics di Vercel è attivo dal 20/11/2026 (progetto `chathel-sito` → Analytics). Non usa cookie; le visite precedenti non sono registrate.
+
+Link personale per un hotel, da mandare al direttore (il nome dopo `utm_campaign` è quello che si vede nel pannello; meglio solo lettere minuscole e trattini):
+
+```
+https://chathel.com/?utm_source=whatsapp&utm_campaign=nome-hotel
+```
+
+`utm_source` dice da dove è partito il link (`whatsapp`, `email`, `biglietto`). Nel pannello di Vercel: Analytics → filtro o raggruppamento per UTM Campaign. Il link lega una visita a un hotel, quindi a una persona: va citato nell'informativa del sito, da far verificare all'avvocato.
