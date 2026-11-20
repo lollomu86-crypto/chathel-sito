@@ -32,7 +32,7 @@ Web Analytics di Vercel è attivo dal 20/11/2026 (progetto `chathel-sito` → An
 ```
 https://chathel.com/v/nome-hotel
 ```
-Apre lo stesso sito; nel pannello di Vercel (Analytics → Pages) la visita compare come pagina `/v/nome-hotel`, con data, paese e dispositivo. Usare solo lettere minuscole, numeri e trattini (`forte-village`, `h07`). La regola è in `vercel.json` (rewrites).
+Apre lo stesso sito; nel pannello di Vercel (Analytics → Pages) la visita compare come pagina `/v/nome-hotel`, con data, paese e dispositivo. Usare solo lettere minuscole, numeri e trattini (`hotel-mare`, `h07`). La regola è in `vercel.json` (rewrites).
 
 Non usare i parametri `utm_`: sul piano gratuito Vercel non li mostra (servono Enterprise o il componente Web Analytics Plus).
 
