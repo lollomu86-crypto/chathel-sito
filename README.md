@@ -9,7 +9,7 @@ Pagina di presentazione di ChatHel per i direttori di hotel e resort. È separat
 - Le schermate in `img/*.webp` sono catture reali dell'app in modalità demo (`CHATHEL_DEMO=1`), con ospiti dimostrativi.
 
 ## Aprirlo in locale
-Basta un doppio clic su `index.html`. Oppure, per provarlo come sarà online:
+I percorsi di immagini e stili partono da `/` (servono per i link `/v/…`), quindi il doppio clic su `index.html` non basta: avviare un piccolo server nella cartella.
 
 ```bash
 npx serve .
@@ -28,10 +28,12 @@ La reception AI è segnata "in attivazione" finché non è attiva in produzione:
 ## Statistiche delle visite
 Web Analytics di Vercel è attivo dal 20/11/2026 (progetto `chathel-sito` → Analytics). Non usa cookie; le visite precedenti non sono registrate.
 
-Link personale per un hotel, da mandare al direttore (il nome dopo `utm_campaign` è quello che si vede nel pannello; meglio solo lettere minuscole e trattini):
-
+### Link personale per un hotel
 ```
-https://chathel.com/?utm_source=whatsapp&utm_campaign=nome-hotel
+https://chathel.com/v/nome-hotel
 ```
+Apre lo stesso sito; nel pannello di Vercel (Analytics → Pages) la visita compare come pagina `/v/nome-hotel`, con data, paese e dispositivo. Usare solo lettere minuscole, numeri e trattini (`forte-village`, `h07`). La regola è in `vercel.json` (rewrites).
 
-`utm_source` dice da dove è partito il link (`whatsapp`, `email`, `biglietto`). Nel pannello di Vercel: Analytics → filtro o raggruppamento per UTM Campaign. Il link lega una visita a un hotel, quindi a una persona: va citato nell'informativa del sito, da far verificare all'avvocato.
+Non usare i parametri `utm_`: sul piano gratuito Vercel non li mostra (servono Enterprise o il componente Web Analytics Plus).
+
+Il link lega una visita a un hotel, quindi a una persona: va citato nell'informativa del sito, da far verificare all'avvocato.

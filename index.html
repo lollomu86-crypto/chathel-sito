@@ -10,13 +10,14 @@
   <meta property="og:description" content="La web app per gli ospiti del tuo resort. Si entra con un QR, senza scaricare nulla.">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="it_IT">
-  <meta property="og:image" content="img/chathel-logo-tessera.png">
-  <link rel="icon" type="image/png" href="img/icon-192.png">
-  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+  <meta property="og:image" content="https://chathel.com/img/chathel-logo-tessera.png">
+  <link rel="icon" type="image/png" href="/img/icon-192.png">
+  <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="canonical" href="https://chathel.com/">
+  <link rel="stylesheet" href="/style.css">
   <!-- Statistiche delle visite di Vercel (Web Analytics): senza cookie; i link con utm_campaign mostrano da quale hotel arriva la visita -->
   <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
   <script defer src="/_vercel/insights/script.js"></script>
@@ -27,7 +28,7 @@
   <header class="topbar" id="top">
     <div class="wrap topbar-in">
       <a class="brand" href="#top" aria-label="ChatHel, torna all'inizio">
-        <img src="img/icon-192.png" alt="" width="40" height="40">
+        <img src="/img/icon-192.png" alt="" width="40" height="40">
         <span>ChatHel</span>
       </a>
       <nav class="nav" aria-label="Sezioni">
@@ -54,10 +55,10 @@
         </div>
         <div class="hero-visual">
           <figure class="phone phone-hero">
-            <img src="img/home.webp" alt="Schermata Home dell'app ChatHel: bonus di benvenuto, scorciatoie per Eventi, Prenota e Reception, prossimi eventi" width="620" height="1342">
+            <img src="/img/home.webp" alt="Schermata Home dell'app ChatHel: bonus di benvenuto, scorciatoie per Eventi, Prenota e Reception, prossimi eventi" width="620" height="1342">
           </figure>
           <figure class="phone phone-back" aria-hidden="true">
-            <img src="img/events.webp" alt="" width="620" height="1342" loading="lazy">
+            <img src="/img/events.webp" alt="" width="620" height="1342" loading="lazy">
           </figure>
         </div>
       </div>
@@ -163,19 +164,19 @@
 
         <div class="gallery" aria-label="Schermate dell'app per gli ospiti">
           <figure class="shot">
-            <div class="phone"><img src="img/bonus.webp" alt="Il bonus di benvenuto con il codice QR da mostrare al barista" width="620" height="1342" loading="lazy"></div>
+            <div class="phone"><img src="/img/bonus.webp" alt="Il bonus di benvenuto con il codice QR da mostrare al barista" width="620" height="1342" loading="lazy"></div>
             <figcaption>Bonus di benvenuto</figcaption>
           </figure>
           <figure class="shot">
-            <div class="phone"><img src="img/events.webp" alt="Elenco degli eventi con il pulsante Ci vado" width="620" height="1342" loading="lazy"></div>
+            <div class="phone"><img src="/img/events.webp" alt="Elenco degli eventi con il pulsante Ci vado" width="620" height="1342" loading="lazy"></div>
             <figcaption>Eventi</figcaption>
           </figure>
           <figure class="shot">
-            <div class="phone"><img src="img/book.webp" alt="Prenotazione di spa e piscina e sfide ai giochi" width="620" height="1342" loading="lazy"></div>
+            <div class="phone"><img src="/img/book.webp" alt="Prenotazione di spa e piscina e sfide ai giochi" width="620" height="1342" loading="lazy"></div>
             <figcaption>Prenotazioni e giochi</figcaption>
           </figure>
           <figure class="shot">
-            <div class="phone"><img src="img/social.webp" alt="Elenco degli ospiti che hanno scelto di comparire, con nome e lingua" width="620" height="1342" loading="lazy"></div>
+            <div class="phone"><img src="/img/social.webp" alt="Elenco degli ospiti che hanno scelto di comparire, con nome e lingua" width="620" height="1342" loading="lazy"></div>
             <figcaption>Ospiti</figcaption>
           </figure>
         </div>
@@ -191,7 +192,7 @@
             <div class="phone phone-lg">
               <div class="chat" aria-label="Esempio della chat dell'hotel">
                 <div class="chat-head">
-                  <img src="img/icon-192.png" alt="" width="34" height="34">
+                  <img src="/img/icon-192.png" alt="" width="34" height="34">
                   <span><strong>Hotel Demo Alba</strong><small>Ciao, Giulia</small></span>
                 </div>
                 <p class="chat-title">Chat di Hotel Demo Alba</p>
@@ -271,13 +272,13 @@
         </div>
 
         <div class="panel-tabs" role="tablist" aria-label="Schermate del pannello">
-          <button role="tab" id="tab-oggi" aria-controls="pane" aria-selected="true" data-img="img/admin-oggi.webp" data-alt="Pagina Oggi del pannello: richieste, segnalazioni, posti prenotati, ospiti entrati, eventi del giorno">Oggi</button>
-          <button role="tab" id="tab-ospiti" aria-controls="pane" aria-selected="false" tabindex="-1" data-img="img/admin-ospiti.webp" data-alt="Pagina Ospiti del pannello: nome, lingua, soggiorno, ultimo accesso">Ospiti</button>
-          <button role="tab" id="tab-impostazioni" aria-controls="pane" aria-selected="false" tabindex="-1" data-img="img/admin-settings.webp" data-alt="Impostazioni del pannello: logo, foto di copertina e messaggio di benvenuto">Personalizzazione</button>
+          <button role="tab" id="tab-oggi" aria-controls="pane" aria-selected="true" data-img="/img/admin-oggi.webp" data-alt="Pagina Oggi del pannello: richieste, segnalazioni, posti prenotati, ospiti entrati, eventi del giorno">Oggi</button>
+          <button role="tab" id="tab-ospiti" aria-controls="pane" aria-selected="false" tabindex="-1" data-img="/img/admin-ospiti.webp" data-alt="Pagina Ospiti del pannello: nome, lingua, soggiorno, ultimo accesso">Ospiti</button>
+          <button role="tab" id="tab-impostazioni" aria-controls="pane" aria-selected="false" tabindex="-1" data-img="/img/admin-settings.webp" data-alt="Impostazioni del pannello: logo, foto di copertina e messaggio di benvenuto">Personalizzazione</button>
         </div>
         <figure class="browser" id="pane" role="tabpanel" aria-labelledby="tab-oggi">
           <div class="browser-bar" aria-hidden="true"><i></i><i></i><i></i><span>Pannello dell'hotel</span></div>
-          <img id="pane-img" src="img/admin-oggi.webp" alt="Pagina Oggi del pannello: richieste, segnalazioni, posti prenotati, ospiti entrati, eventi del giorno" width="1600" height="1025" loading="lazy">
+          <img id="pane-img" src="/img/admin-oggi.webp" alt="Pagina Oggi del pannello: richieste, segnalazioni, posti prenotati, ospiti entrati, eventi del giorno" width="1600" height="1025" loading="lazy">
         </figure>
 
         <div class="panel-grid">
@@ -309,7 +310,7 @@
     <section class="contact" id="contatti">
       <div class="wrap contact-in">
         <div class="contact-text">
-          <img class="contact-logo" src="img/chathel-logo-tessera.png" alt="ChatHel" width="120" height="112">
+          <img class="contact-logo" src="/img/chathel-logo-tessera.png" alt="ChatHel" width="120" height="112">
           <h2>Vediamo ChatHel nel tuo hotel</h2>
           <p>Ti mostriamo l'app dal vivo, sul tuo telefono, con il nome della tua struttura. Siamo di Cagliari e veniamo da te di persona.</p>
         </div>
@@ -339,6 +340,6 @@
     </div>
   </footer>
 
-  <script src="main.js" defer></script>
+  <script src="/main.js" defer></script>
 </body>
 </html>
