@@ -28,7 +28,7 @@ export default async function handler(req, res) {
       },
       body: JSON.stringify(row),
     });
-    if (!r.ok) console.error('site_visits insert', r.status);
+    if (!r.ok) console.error('site_visits insert', r.status, (await r.text().catch(() => '')).slice(0, 300));
   } catch (e) {
     console.error('site_visits insert failed');
   }

@@ -24,6 +24,9 @@ create index if not exists site_visits_hotel_idx on public.site_visits (hotel, t
 
 alter table public.site_visits enable row level security;
 revoke all on public.site_visits from anon, authenticated;
+-- Nei progetti Supabase recenti le tabelle create da SQL non sono esposte da sole alle API: serve il permesso esplicito.
+grant select, insert, delete on public.site_visits to service_role;
+grant usage, select on sequence public.site_visits_id_seq to service_role;
 
 comment on table public.site_visits is
   'Visite di chathel.com (sito per i direttori). Solo service role. Niente IP. Da cancellare dopo 13 mesi (vedi README del sito).';
